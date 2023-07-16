@@ -2,11 +2,11 @@
 
 1. FIRST CREATE node_modules FILE
 
-2. CREATE A .env FILE
+2. CREATE A .env FILE AND 
 
-a. ADD PORT = 8080
-b. MONGO_URL = mongodb://127.0.0.1:27017/dbName
-c. SECRET=SECRET
+1) ADD PORT = 8080
+2) MONGO_URL = mongodb://127.0.0.1:27017/dbName
+3) SECRET=SECRET
 
 3. OPEN TERMINAL AND RUN COMMAND npm run dev 
 
