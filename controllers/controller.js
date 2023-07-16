@@ -112,7 +112,9 @@ const signIn = async (req, res) => {
             messageTemplate.data = user
         */
 
-        res.redirect(`/home`)
+        if (userDynamicName.name) {
+            res.redirect(`/home`)
+        }
 
     } catch (error) {
         messageTemplate.success = false

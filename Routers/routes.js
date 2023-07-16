@@ -5,37 +5,48 @@ Router.get('/', (req, res) => {
     res.status(200).json({
         success: true,
         signIn: '/signIn',
-        signUp: '/sighUp'
+        signUp: '/signUp'
     })
 })
 
-if (userDynamicName.name !== '') {
-    Router.get('/home', (req, res) => {
-        const userName = req.query.name;
-        console.log('username', userName);
+Router.get('/home', (req, res) => {
+    if (userDynamicName.name) {
         res.render('index', {
             title: 'Home page',
             name: userDynamicName.name
         })
-    })
-}
+    }
+    else {
+        return res.status(200).json({
+            success: false,
+            message: "Page not Found",
+            signIn: '/signIn',
+            signUp: '/signUp'
+        })
+    }
+})
 
 Router.get('/signIn', (req, res) => {
+    userDynamicName.name = ''
     res.render('signin', {
         title: 'Login page'
     })
 })
 
 Router.get('/signUp', (req, res) => {
+    userDynamicName.name = ''
     res.render('signup', {
         title: 'Signup Page'
     })
 })
 
 Router.get('*', (req, res) => {
+    userDynamicName.name = ''
     res.status(200).json({
         success: false,
-        message: "Page not Found"
+        message: "Page not Found",
+        signIn: '/signIn',
+        signUp: '/signUp'
     })
 })
 
